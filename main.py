@@ -19,7 +19,7 @@ def create_app() -> Flask:
     app.config["MAX_CONTENT_LENGTH"] = Config.MAX_UPLOAD_MB * 1024 * 1024
 
     CORS(app,
-         resources={r"/*": {"origins": Config.ALLOWED_ORIGINS}},
+         resources={r"/*": {"origins": "*"}},
          methods=["GET", "POST", "OPTIONS", "HEAD"],
          allow_headers=["Content-Type", "Authorization"],
          max_age=86400)
@@ -28,7 +28,7 @@ def create_app() -> Flask:
 
     # ---- Keep-alive for UptimeRobot (GET and HEAD both return 200) ----
     @app.route("/", methods=["GET", "HEAD"])
-    @app.route("/ping", methods=["GET", "HEAD"])
+    @app.route("/health", methods=["GET", "HEAD"])
     def ping():
         return jsonify({"status": "ok", "service": "ai-video-editor"}), 200
 
