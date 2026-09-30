@@ -1,0 +1,9 @@
+Flask==3.0.3
+flask-cors==4.0.1
+gunicorn==22.0.0
+python-dotenv==1.0.1
+requests==2.32.3
+yt-dlp>=2024.8.6
+# mediapipe brings in opencv-contrib-python (cv2) automatically
+mediapipe==0.10.14
+numpy<2
